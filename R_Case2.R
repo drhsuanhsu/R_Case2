@@ -60,11 +60,32 @@ library(ggplot2)
 # E.g. position this more as a way to get started in walking more? 
 # Or to measure steps that you're already taking?
 
+#Simple version
 ggplot(data=daily_activity, aes(x=TotalSteps, y=SedentaryMinutes)) + geom_point()
+
+#Beautiful version
+ggplot(data = daily_activity, aes(x = TotalSteps, y = SedentaryMinutes)) +
+  geom_point(color = "blue", alpha = 0.5) +  # Plot each participant's sleep minutes and steps as points
+  geom_smooth(method = "lm", color = "red", se = TRUE) +  # Add a linear regression line with a confidence interval
+  labs(title = "Relationship Between steps taken in a day and sedentary minute",
+       x = "Total Steps",
+       y = "Sedentary Minutes") +
+  theme_minimal()  # Apply a minimal theme for a clean look
+
 
 # What's the relationship between minutes asleep and time in bed? 
 # You might expect it to be almost completely linear - are there any unexpected trends?
+#Simple version
 ggplot(data=sleep_day, aes(x=TotalMinutesAsleep, y=TotalTimeInBed)) + geom_point()
+
+#Beautiful version
+ggplot(data =sleep_day, aes(x=TotalMinutesAsleep, y=TotalTimeInBed)) +
+  geom_point(color = "blue", alpha = 0.5) +  # Plot each participant's sleep minutes and steps as points
+  geom_smooth(method = "lm", color = "red", se = TRUE) +  # Add a linear regression line with a confidence interval
+  labs(title = "Relationship Between Total Minutes Asleep and Total Time In Bed",
+       x = "Total Minutes Asleep",
+       y = "Total Time In Bed") +
+  theme_minimal()  # Apply a minimal theme for a clean look
 
 
 
